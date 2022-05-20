@@ -3,50 +3,149 @@
     flex-direction: row;
 
 }
-.list-container{
-    width: 50vw;
-    height: inherit;
-    max-height: 100vh;
-    overflow:scroll; 
-    margin: 0px 1rem;
 
-}
 .outer-map-container{
     width: 50vw;
     height: 100vh;
     position: relative;
 }
-.car-item{
-    padding: 3rem;
-    cursor: pointer;    
-    font-size: xx-large;
-    text-align: center;
-}
-.car-item.highlighted{
-    background-color: yellow;
+
+.highlighted{
+    transform: scale(1.1);
+    box-shadow: 0 9px 47px 11px rgba(51, 51, 51, 0.18);
+    background-color: rgb(251, 255, 226) !important;
 
 }
-.car-item p{
-   margin-top: 20px;
+
+
+
+
+  .driverboard {
+    border-radius: 12px;
+    width: 50vw;
+    height: inherit;
+    max-height: 100vh;
+
+    padding: 1rem 3rem;
+}
+.driverboard header {
+    --start: 15%;
+    height: 130px;
+    background-image: repeating-radial-gradient(circle at var(--start), transparent 0%, transparent 10%, rgba(54, 89, 219, 0.33) 10%, rgba(54, 89, 219, 0.33) 17%), linear-gradient(to right, #5b7cfa, #3659db);
+    color: #fff;
+    position: relative;
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+}
+.driverboard header .driverboard__title {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    right: calc(var(--start) * 0.75);
+    transform: translateY(-50%);
+    text-transform: uppercase;
+    margin: 0;
+    
+}
+.driverboard header .driverboard__title span {
+    display: block;
+}
+.driverboard header .driverboard__title--top {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 6.5px;
+}
+.driverboard header .driverboard__title--bottom {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 3.55px;
+    opacity: 0.65;
+    transform: translateY(-2px);
 }
 
-@media screen and (max-width: 600px) {
+.driverboard__profiles {
+    background-color: #fff;
+    border-radius: 0 0 12px 12px;
+    padding: 15px 15px 20px;
+    display: grid;
+    row-gap: 8px;
+    max-height: 88%;
+    overflow-y:scroll; 
+    padding: 1rem 3rem;
+}
+.driverboard__profile {
+    margin: 0.5rem 0px;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    align-items: center;
+    padding: 10px 30px 10px 10px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 7px -1px rgba(51, 51, 51, 0.23);
+    cursor: pointer;
+    transition: transform 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98), box-shadow 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98);
+    background-color: #fff;
+    height: 6rem;
+}
+.driverboard__profile:hover {
+    transform: scale(1.1);
+    box-shadow: 0 9px 47px 11px rgba(51, 51, 51, 0.18);
+}
+.driverboard__picture {
+    max-width: inherit;
+    width: 60px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px #ebeef3, 0 0 0 22px #f3f4f6;
+}
+.driverboard__name {
+    color: #979cb0;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 0.64px;
+    margin-left: 12px;
+}
+.driverboard__value {
+    color: #35d8ac;
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 30px;
+    text-align: right;
+}
+.driverboard__value > span {
+    opacity: 0.8;
+    font-weight: 600;
+    font-size: 13px;
+    margin-left: 3px;
+}
+body {
+    margin: 0;
+    background-color: #eaeaea;
+    display: grid;
+    height: 100vh;
+    place-items: center;
+    font-family: "Source Sans Pro", sans-serif;
+}
+.driverboard {
+    box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.4);
+}
+@media screen and (max-width: 1025px) {
     .container {
         flex-direction: column;
+        gap: 5rem;
     }
-    .list-container{
-        width: 80vw;
-        margin: 0px 2rem;
+    .driverboard{
+        width: 100vw;
+        height: 600px;
+        margin: 0px 0rem;
+        padding: 0px 0px;
 
     }
     .outer-map-container{
         width: 100vw;
     }
-    .car-item{
-        padding: 0.5rem;
-        font-size: small;
+    .driverboard__profiles{
+        padding: 1rem 1.5rem;
+
     }
-    .car-item p{
-        margin-top: 7px;
-    }
+
   }
