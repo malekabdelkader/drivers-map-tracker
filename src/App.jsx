@@ -4,11 +4,17 @@ import "./App.css";
 import InitialGeoJson from "./geoJson.json";
 
 function App() {
+  //Hold the Langitude of the map center
   const [lng, setLng] = useState(-87.65);
+  //Hold the Latitude of the map center
   const [lat, setLat] = useState(41.84);
   const [zoom, setZoom] = useState(10);
-  const [selectedCarId, setselectedCarId] = useState("202314147deaz245de");
+  const [selectedCarId, setselectedCarId] = useState(InitialGeoJson.cars[0].id);
+
+  //Hold the cars infos 
   const [geoJson, setGeoJson] = useState(InitialGeoJson);
+
+  //Changes cars positions every 2 seconds based on the cars targets positions
   useEffect(() => {
     if (geoJson) {
       const interval = setInterval(() => {
@@ -62,7 +68,7 @@ function App() {
         {geoJson.cars.map((f) => {
           return (
             <div
-            key={f.id}
+              key={f.id}
               id={"car-" + f.id}
               class={`car-item ${selectedCarId == f.id ? "highlighted" : ""}`}
               onMouseEnter={() => onHoverHandler(f)}
