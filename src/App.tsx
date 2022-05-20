@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import Map from "./Map";
 import "./App.css";
-import InitialGeoJson from "./geoJson.json";
+import InitialGeoJson from "./geoJson";
+import GeoJson from "./models/geoJson.model";
+import Car from "./models/car.model";
 
 function App() {
   //Hold the Langitude of the map center
@@ -12,7 +14,7 @@ function App() {
   const [selectedCarId, setselectedCarId] = useState(InitialGeoJson.cars[0].id);
 
   //Hold the cars infos 
-  const [geoJson, setGeoJson] = useState(InitialGeoJson);
+  const [geoJson, setGeoJson] = useState<GeoJson>(InitialGeoJson);
 
   //Changes cars positions every 2 seconds based on the cars targets positions
   useEffect(() => {
@@ -51,11 +53,11 @@ function App() {
       return () => clearInterval(interval);
     }
   }, []);
-  const onHoverHandler = (f) => {
+  const onHoverHandler = (f:Car) => {
     setselectedCarId(f.id);
     setZoom(10)
   };
-  const changeViewPosition = (f) => {
+  const changeViewPosition = (f:Car) => {
     setselectedCarId(f.id);
     setLng(f.geometry.coordinates[0]);
     setLat(f.geometry.coordinates[1]);
@@ -63,14 +65,14 @@ function App() {
   };
 
   return (
-    <div class="container">
-      <div class="list-container">
-        {geoJson.cars.map((f) => {
+    <div className="container">
+      <div className="list-container">
+        {geoJson.cars.map((f:Car) => {
           return (
             <div
               key={f.id}
               id={"car-" + f.id}
-              class={`car-item ${selectedCarId == f.id ? "highlighted" : ""}`}
+              className={`car-item ${selectedCarId == f.id ? "highlighted" : ""}`}
               onMouseEnter={() => onHoverHandler(f)}
               onClick={()=>changeViewPosition(f)}
             >
@@ -83,17 +85,14 @@ function App() {
           );
         })}
       </div>
-      <div class="outer-map-container">
+      <div className="outer-map-container">
         <Map
           geoJson={geoJson}
           selectedCarId={selectedCarId}
           setselectedCarId={setselectedCarId}
           lat={lat}
           lng={lng}
-          setLat={setLat}
-          setLng={setLng}
           zoom={zoom}
-          setZoom={setZoom}
         />
       </div>
     </div>

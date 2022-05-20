@@ -1,10 +1,13 @@
-{
+import GeoJson from './models/geoJson.model';
+
+const geoJson:GeoJson={
   "cars": [
     {
        
       "id":"202314147deaz245de",
       "driver": {
-        "name": "Lincoln "      },
+        "name": "Lincoln "
+       },
       "geometry": {
         "coordinates": [-87.647596, 41.940403],
         "target":[-87.617596, 41.940403]
@@ -108,3 +111,4 @@
     }
   ]
 }
+export default geoJson;
