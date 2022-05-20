@@ -66,24 +66,26 @@ function App() {
 
   return (
     <div className="container">
-      <div className="list-container">
-        {geoJson.cars.map((f:Car) => {
-          return (
-            <div
+      <div className="leaderboard">
+      <header>
+
+
+<h1 className="leaderboard__title"><span className="leaderboard__title--top">Car Tracker</span><span className="leaderboard__title--bottom">track your company's cars 24/7</span></h1>
+</header>
+      <main className="leaderboard__profiles">
+    {geoJson.cars.map((f:Car) => (
+    <article
               key={f.id}
               id={"car-" + f.id}
-              className={`car-item ${selectedCarId == f.id ? "highlighted" : ""}`}
               onMouseEnter={() => onHoverHandler(f)}
               onClick={()=>changeViewPosition(f)}
-            >
-              {f.driver.name}
-              <br />
-              <p>
-                {f.geometry.coordinates[0].toFixed(6) + " , " + f.geometry.coordinates[1].toFixed(6)}
-              </p>
-            </div>
-          );
-        })}
+              className={`leaderboard__profile ${selectedCarId == f.id ? "highlighted" : ""}`}>
+      <img src={`https://avatars.dicebear.com/api/open-peeps/${f.driver.name}.svg`} alt={f.driver.name}className="leaderboard__picture"/>
+      <span className="leaderboard__name">{f.driver.name}</span>
+      <span className="leaderboard__value"> {f.geometry.coordinates[0].toFixed(4) }<span>Lat</span><br/>{ f.geometry.coordinates[1].toFixed(4)}<span>Lng</span></span>
+    </article>
+    ))}
+      </main>
       </div>
       <div className="outer-map-container">
         <Map
