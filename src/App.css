@@ -1,0 +1,26 @@
+.container{
+    display: flex;
+}
+.list-container{
+    width: 50vw;
+    height: inherit;
+    max-height: 100vh;
+    overflow:scroll; 
+    margin: 0px 1rem;
+
+}
+.outer-map-container{
+    width: 50vw;
+    height: 100vh;
+    position: relative;
+}
+.car-item{
+    padding: 6rem;
+    cursor: pointer;    
+    font-size: xx-large;
+    text-align: center;
+}
+.car-item.highlighted{
+    background-color: yellow;
+
+}
