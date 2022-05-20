@@ -7,7 +7,7 @@ import './Map.css';
 
 
 mapboxgl.accessToken =
-  'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA';
+  'pk.eyJ1IjoibWFsZWs5NyIsImEiOiJjbDNlYXMyb2MwZ2puM21wcjE3ZGx6dHljIn0.khxYSNnUEhDCeR00mCl8EQ';
 
 /** 
  * the Marker is using a Javscript Library not a react Library 
