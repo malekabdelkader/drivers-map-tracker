@@ -20,7 +20,7 @@
 
 
 
-  .leaderboard {
+  .driverboard {
     border-radius: 12px;
     width: 50vw;
     height: inherit;
@@ -28,7 +28,7 @@
 
     padding: 1rem 3rem;
 }
-.leaderboard header {
+.driverboard header {
     --start: 15%;
     height: 130px;
     background-image: repeating-radial-gradient(circle at var(--start), transparent 0%, transparent 10%, rgba(54, 89, 219, 0.33) 10%, rgba(54, 89, 219, 0.33) 17%), linear-gradient(to right, #5b7cfa, #3659db);
@@ -37,7 +37,7 @@
     border-radius: 12px 12px 0 0;
     overflow: hidden;
 }
-.leaderboard header .leaderboard__title {
+.driverboard header .driverboard__title {
     position: absolute;
     z-index: 2;
     top: 50%;
@@ -47,15 +47,15 @@
     margin: 0;
     
 }
-.leaderboard header .leaderboard__title span {
+.driverboard header .driverboard__title span {
     display: block;
 }
-.leaderboard header .leaderboard__title--top {
+.driverboard header .driverboard__title--top {
     font-size: 24px;
     font-weight: 700;
     letter-spacing: 6.5px;
 }
-.leaderboard header .leaderboard__title--bottom {
+.driverboard header .driverboard__title--bottom {
     font-size: 13px;
     font-weight: 500;
     letter-spacing: 3.55px;
@@ -63,7 +63,7 @@
     transform: translateY(-2px);
 }
 
-.leaderboard__profiles {
+.driverboard__profiles {
     background-color: #fff;
     border-radius: 0 0 12px 12px;
     padding: 15px 15px 20px;
@@ -73,7 +73,7 @@
     overflow-y:scroll; 
     padding: 1rem 3rem;
 }
-.leaderboard__profile {
+.driverboard__profile {
     margin: 0.5rem 0px;
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
@@ -87,31 +87,31 @@
     background-color: #fff;
     height: 6rem;
 }
-.leaderboard__profile:hover {
+.driverboard__profile:hover {
     transform: scale(1.1);
     box-shadow: 0 9px 47px 11px rgba(51, 51, 51, 0.18);
 }
-.leaderboard__picture {
+.driverboard__picture {
     max-width: 100%;
     width: 60px;
     border-radius: 50%;
     box-shadow: 0 0 0 10px #ebeef3, 0 0 0 22px #f3f4f6;
 }
-.leaderboard__name {
+.driverboard__name {
     color: #979cb0;
     font-weight: 600;
     font-size: 20px;
     letter-spacing: 0.64px;
     margin-left: 12px;
 }
-.leaderboard__value {
+.driverboard__value {
     color: #35d8ac;
     font-weight: 700;
     font-size: 34px;
     line-height: 30px;
     text-align: right;
 }
-.leaderboard__value > span {
+.driverboard__value > span {
     opacity: 0.8;
     font-weight: 600;
     font-size: 13px;
@@ -125,7 +125,7 @@ body {
     place-items: center;
     font-family: "Source Sans Pro", sans-serif;
 }
-.leaderboard {
+.driverboard {
     box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.4);
 }
 @media screen and (max-width: 1025px) {
@@ -133,7 +133,7 @@ body {
         flex-direction: column;
         gap: 5rem;
     }
-    .leaderboard{
+    .driverboard{
         width: 100vw;
         height: 600px;
         margin: 0px 0rem;

@@ -14,7 +14,7 @@ const Marker:React.FC<MarkerProps> = ({ onClick,  car ,selectedCarId}) => {
     return (
       <button onClick={_onClick} className="marker">
         <img height={"70px"} src='https://www.shareicon.net/data/512x512/2016/01/15/703693_gps_512x512.png'></img>
-        {(selectedCarId==car.id) && <p>{car.driver.name}</p> }
+        {(selectedCarId==car.id) && <p>Driver: {car.driver.name}</p> }
       </button>
     );
   };
