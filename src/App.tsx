@@ -13,7 +13,7 @@ function App() {
   const [zoom, setZoom] = useState(10);
   const [selectedCarId, setselectedCarId] = useState(InitialGeoJson.cars[0].id);
 
-  //Hold the cars infos 
+  //Hold the cars infos
   const [geoJson, setGeoJson] = useState<GeoJson>(InitialGeoJson);
 
   //Changes cars positions every 2 seconds based on the cars targets positions
@@ -21,24 +21,36 @@ function App() {
     if (geoJson) {
       const interval = setInterval(() => {
         const newV = geoJson.cars.map((c) => {
-          if(c.geometry.coordinates[0].toFixed(3)>c.geometry.target[0].toFixed(3)){
+          if (
+            c.geometry.coordinates[0].toFixed(3) >
+            c.geometry.target[0].toFixed(3)
+          ) {
             c.geometry.coordinates = [
               c.geometry.coordinates[0] - 0.001,
               c.geometry.coordinates[1],
             ];
-          }else if(c.geometry.coordinates[0].toFixed(3)<c.geometry.target[0].toFixed(3)){
+          } else if (
+            c.geometry.coordinates[0].toFixed(3) <
+            c.geometry.target[0].toFixed(3)
+          ) {
             c.geometry.coordinates = [
               c.geometry.coordinates[0] + 0.001,
               c.geometry.coordinates[1],
             ];
           }
 
-          if(c.geometry.coordinates[1].toFixed(3)>c.geometry.target[1].toFixed(3)){
+          if (
+            c.geometry.coordinates[1].toFixed(3) >
+            c.geometry.target[1].toFixed(3)
+          ) {
             c.geometry.coordinates = [
-              c.geometry.coordinates[0] ,
-              c.geometry.coordinates[1]- 0.001,
+              c.geometry.coordinates[0],
+              c.geometry.coordinates[1] - 0.001,
             ];
-          }else if(c.geometry.coordinates[1].toFixed(3)<c.geometry.target[1].toFixed(3)){
+          } else if (
+            c.geometry.coordinates[1].toFixed(3) <
+            c.geometry.target[1].toFixed(3)
+          ) {
             c.geometry.coordinates = [
               c.geometry.coordinates[0],
               c.geometry.coordinates[1] + 0.001,
@@ -53,11 +65,11 @@ function App() {
       return () => clearInterval(interval);
     }
   }, []);
-  const onHoverHandler = (f:Car) => {
+  const onHoverHandler = (f: Car) => {
     setselectedCarId(f.id);
-    setZoom(10)
+    setZoom(10);
   };
-  const changeViewPosition = (f:Car) => {
+  const changeViewPosition = (f: Car) => {
     setselectedCarId(f.id);
     setLng(f.geometry.coordinates[0]);
     setLat(f.geometry.coordinates[1]);
@@ -67,25 +79,42 @@ function App() {
   return (
     <div className="container">
       <div className="driverboard">
-      <header>
-
-
-<h1 className="driverboard__title"><span className="driverboard__title--top">Car Tracker</span><span className="driverboard__title--bottom">track your company's cars 24/7</span></h1>
-</header>
-      <main className="driverboard__profiles">
-    {geoJson.cars.map((f:Car) => (
-    <article
+        <header>
+          <h1 className="driverboard__title">
+            <span className="driverboard__title--top">Car Tracker</span>
+            <span className="driverboard__title--bottom">
+              track your company's cars 24/7
+            </span>
+          </h1>
+        </header>
+        <main className="driverboard__profiles">
+          {geoJson.cars.map((f: Car) => (
+            <article
               key={f.id}
               id={"car-" + f.id}
               onMouseEnter={() => onHoverHandler(f)}
-              onClick={()=>changeViewPosition(f)}
-              className={`driverboard__profile ${selectedCarId == f.id ? "highlighted" : ""}`}>
-      <img src={`https://avatars.dicebear.com/api/open-peeps/${f.driver.name}.svg`} alt={f.driver.name}className="driverboard__picture"/>
-      <span className="driverboard__name">{f.driver.name}</span>
-      <span className="driverboard__value"> {f.geometry.coordinates[0].toFixed(4) }<span>Lat</span><br/>{ f.geometry.coordinates[1].toFixed(4)}<span>Lng</span></span>
-    </article>
-    ))}
-      </main>
+              onClick={() => changeViewPosition(f)}
+              className={`driverboard__profile ${
+                selectedCarId == f.id ? "highlighted" : ""
+              }`}
+            >
+              <img
+                src={`https://avatars.dicebear.com/api/open-peeps/${f.driver.name}.svg`}
+                alt={f.driver.name}
+                className="driverboard__picture"
+              />
+              <span className="driverboard__name">{f.driver.name}</span>
+              <span className="driverboard__value">
+                {" "}
+                {f.geometry.coordinates[0].toFixed(4)}
+                <span>Lat</span>
+                <br />
+                {f.geometry.coordinates[1].toFixed(4)}
+                <span>Lng</span>
+              </span>
+            </article>
+          ))}
+        </main>
       </div>
       <div className="outer-map-container">
         <Map
