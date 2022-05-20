@@ -17,9 +17,11 @@ mapboxgl.accessToken =
     lat:number,
     zoom:number,
     selectedCarId:string,
+    filter:string
+    setFilter: React.Dispatch<React.SetStateAction<string>>
     setselectedCarId: React.Dispatch<React.SetStateAction<string>>
   }
-  const Map:React.FC<MapProps> = ({geoJson,lng,lat,zoom,selectedCarId,setselectedCarId}) => {
+  const Map:React.FC<MapProps> = ({setFilter,filter,geoJson,lng,lat,zoom,selectedCarId,setselectedCarId}) => {
     const mapContainerRef =useRef<HTMLDivElement | null>(null);
     const [map,setmap]=useState<mapboxgl.Map>()
     //Object that hold all the existant map markers 
@@ -56,7 +58,7 @@ mapboxgl.accessToken =
       ref.current.id=car.id
       // Render a Marker Component on our new DOM node
       ReactDOM.render(
-        <Marker onClick={markerClicked} car={car} selectedCarId={selectedCarId}/>,
+        <Marker filter={filter} onClick={markerClicked} car={car} selectedCarId={selectedCarId}/>,
         ref.current
       );
       
@@ -90,7 +92,7 @@ mapboxgl.accessToken =
       ref.current.id=car.id
       // Render a Marker Component on our new DOM node
       ReactDOM.render(
-        <Marker onClick={markerClicked} car={car} selectedCarId={selectedCarId}/>,
+        <Marker onClick={markerClicked} filter={filter} car={car} selectedCarId={selectedCarId}/>,
         ref.current
       );
       //remove the old marker from the map
@@ -104,7 +106,7 @@ mapboxgl.accessToken =
       // set the new marker in the place of the old removed marker
       setMarkers((prev)=>({...prev,[car.id]:marker}))
     });
-  },[selectedCarId])
+  },[selectedCarId,filter])
 
 
   useEffect(()=>{
@@ -117,6 +119,7 @@ mapboxgl.accessToken =
 
  
   const markerClicked = (id:string) => {
+    setFilter('')
     setselectedCarId(id)
     const selectedCarElement=document.getElementById('car-'+id)
     selectedCarElement?.scrollIntoView({behavior: "smooth", inline: "end",block:'center'})
