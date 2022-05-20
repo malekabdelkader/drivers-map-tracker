@@ -12,6 +12,7 @@ function App() {
   const [lat, setLat] = useState(41.84);
   const [zoom, setZoom] = useState(10);
   const [selectedCarId, setselectedCarId] = useState(InitialGeoJson.cars[0].id);
+  const [filter, setFilter] = useState<string>("");
 
   //Hold the cars infos
   const [geoJson, setGeoJson] = useState<GeoJson>(InitialGeoJson);
@@ -84,36 +85,51 @@ function App() {
             <span className="driverboard__title--top">Car Tracker</span>
             <span className="driverboard__title--bottom">
               track your company's cars 24/7
+
             </span>
+          <input
+          type={"search"}
+          className="driverboard__search-bar"
+          placeholder="Search Driver Name"
+          value={filter}
+          onChange={(e) => {
+            setFilter(e.currentTarget.value.toLowerCase());
+            setselectedCarId("");
+            setZoom(10)
+          }}
+        />
           </h1>
         </header>
+       
         <main className="driverboard__profiles">
-          {geoJson.cars.map((f: Car) => (
-            <article
-              key={f.id}
-              id={"car-" + f.id}
-              onMouseEnter={() => onHoverHandler(f)}
-              onClick={() => changeViewPosition(f)}
-              className={`driverboard__profile ${
-                selectedCarId == f.id ? "highlighted" : ""
-              }`}
-            >
-              <img
-                src={`https://avatars.dicebear.com/api/open-peeps/${f.driver.name}.svg`}
-                alt={f.driver.name}
-                className="driverboard__picture"
-              />
-              <span className="driverboard__name">{f.driver.name}</span>
-              <span className="driverboard__value">
-                {" "}
-                {f.geometry.coordinates[0].toFixed(4)}
-                <span>Lat</span>
-                <br />
-                {f.geometry.coordinates[1].toFixed(4)}
-                <span>Lng</span>
-              </span>
-            </article>
-          ))}
+          {geoJson.cars
+            .filter((c) => c.driver.name.toLowerCase().includes(filter))
+            .map((f: Car) => (
+              <article
+                key={f.id}
+                id={"car-" + f.id}
+                onMouseEnter={() => onHoverHandler(f)}
+                onClick={() => changeViewPosition(f)}
+                className={`driverboard__profile ${
+                  selectedCarId == f.id ? "highlighted" : ""
+                }`}
+              >
+                <img
+                  src={`https://avatars.dicebear.com/api/open-peeps/${f.driver.name}.svg`}
+                  alt={f.driver.name}
+                  className="driverboard__picture"
+                />
+                <span className="driverboard__name">{f.driver.name}</span>
+                <span className="driverboard__value">
+                  {" "}
+                  {f.geometry.coordinates[0].toFixed(4)}
+                  <span>Lat</span>
+                  <br />
+                  {f.geometry.coordinates[1].toFixed(4)}
+                  <span>Lng</span>
+                </span>
+              </article>
+            ))}
         </main>
       </div>
       <div className="outer-map-container">
@@ -123,7 +139,9 @@ function App() {
           setselectedCarId={setselectedCarId}
           lat={lat}
           lng={lng}
+          filter={filter}
           zoom={zoom}
+          setFilter={setFilter}
         />
       </div>
     </div>
