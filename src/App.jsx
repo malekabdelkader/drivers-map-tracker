@@ -71,7 +71,7 @@ function App() {
               {f.driver.name}
               <br />
               <p>
-                {f.geometry.coordinates[0] + "," + f.geometry.coordinates[1]}
+                {f.geometry.coordinates[0].toFixed(6) + " , " + f.geometry.coordinates[1].toFixed(6)}
               </p>
             </div>
           );

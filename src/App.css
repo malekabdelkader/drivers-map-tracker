@@ -1,5 +1,7 @@
 .container{
     display: flex;
+    flex-direction: row;
+
 }
 .list-container{
     width: 50vw;
@@ -15,7 +17,7 @@
     position: relative;
 }
 .car-item{
-    padding: 6rem;
+    padding: 3rem;
     cursor: pointer;    
     font-size: xx-large;
     text-align: center;
@@ -24,3 +26,27 @@
     background-color: yellow;
 
 }
+.car-item p{
+   margin-top: 20px;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        flex-direction: column;
+    }
+    .list-container{
+        width: 80vw;
+        margin: 0px 2rem;
+
+    }
+    .outer-map-container{
+        width: 100vw;
+    }
+    .car-item{
+        padding: 0.5rem;
+        font-size: small;
+    }
+    .car-item p{
+        margin-top: 7px;
+    }
+  }

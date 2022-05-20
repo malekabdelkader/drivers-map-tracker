@@ -35,3 +35,11 @@
   background-color: grey;
   border: 1px solid black ;
 }
+@media screen and (max-width: 600px) {
+  .sidebarStyle{
+    margin: 0rem;
+  }
+  .map-container{
+    margin: 1rem;
+  }
+}
