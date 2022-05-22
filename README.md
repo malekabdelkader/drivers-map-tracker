@@ -1,18 +1,38 @@
-Basic example
----
+# Project Title
 
-Initialize a map with coordinates set by React, update the state of coordinates on map movement, and display that data in an element provided by the render function.
+Car Driver Tracker
 
-![Demo gif](https://i.imgur.com/IGJuTuM.gif)
+## Description
 
-### Run it
+Track Drivers positions on map in real time and show driver name and details from the map in the list of drivers .
 
-    git clone https://github.com/mapbox/mapbox-react-examples.git
+this project is using a javascript library for vector maps on the Web.
+## Getting Started
+    Required : Node.js Runtime enivrement 
+### Packages
 
-    cd mapbox-react-examples/basic
-    npm install
-    npm start
+* Redux : state management system (Not recomended for small projects)
+* mapbox-gl : a JavaScript library for vector maps on the Web.
 
-    open http://localhost:3000/
+### Installing
 
-Runs the app from http://localhost:3000
+* Clone project
+* 
+```
+ npm i 
+```
+
+### Executing program
+
+```
+npm start
+```
+## Author
+
+Malek Abdelkader
+[@malek-abdelkader](https://www.linkedin.com/in/malek-abdelkader/)
+
+## Version History
+
+* 0.1
+    * Initial Release
