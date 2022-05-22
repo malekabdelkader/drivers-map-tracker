@@ -15,13 +15,13 @@ const Marker:React.FC<MarkerProps> = ({filter, onClick,  car ,selectedCarId}) =>
     const showToolTipHandler=()=>{
 
       
-      if((filter && car.driver.name.toLowerCase().includes(filter.toLowerCase())) || car.id==selectedCarId){
+      if((filter && car.driver.name.toLowerCase().includes(filter.toLowerCase())) || car.id===selectedCarId){
         return <p>Driver: {car.driver.name}</p>
       }
       }
     return (
       <button onClick={_onClick} className="marker">
-        <img height={"70px"} src={'https://www.shareicon.net/data/512x512/2016/01/15/703693_gps_512x512.png'}></img>
+        <img height={"70px"} alt={car.driver.name} src={'https://www.shareicon.net/data/512x512/2016/01/15/703693_gps_512x512.png'}></img>
         {showToolTipHandler()}
       </button>
     );
