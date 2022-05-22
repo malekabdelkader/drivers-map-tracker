@@ -7,7 +7,7 @@ Car Driver Tracker
 
 Track Drivers positions on map in real time and show driver name and details from the map in the list of drivers .
 
-N.B: this project is using a javascript library for vector maps on the Web.
+N.B: this project is using a javascript library for vector maps on the Web.<br>
 N.B: drivers coordiantes and destinations are mocked 
 ## Getting Started
     Required : Node.js Runtime enivrement 
