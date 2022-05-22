@@ -21,7 +21,8 @@ N.B: drivers coordiantes and destinations are mocked
 ### Packages
 
 * Redux : state management system (Not recomended for small projects)
-* mapbox-gl : a JavaScript library for vector maps on the Web.
+* [mapbox-gl](https://www.mapbox.com/mapbox-gljs) : a JavaScript library for vector maps on the Web.
+
 
 ### Installing
 
