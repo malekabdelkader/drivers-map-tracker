@@ -6,9 +6,17 @@ Car Driver Tracker
 
 Track Drivers positions on map in real time and show driver name and details from the map in the list of drivers .
 
-this project is using a javascript library for vector maps on the Web.
+N.B: this project is using a javascript library for vector maps on the Web.
+N.B: drivers coordiantes and destinations are mocked 
 ## Getting Started
     Required : Node.js Runtime enivrement 
+## How to use :
+
+* Hover on driver card to show tooltip with the driver name in the map .
+* Click on the driver card to move the map center to the driver's position
+* Search for drivers by name in the search bar , a tooltip under all driver with searched char appears
+* Click on Marker in the map to show driver details
+
 ### Packages
 
 * Redux : state management system (Not recomended for small projects)
